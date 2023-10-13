@@ -1,10 +1,10 @@
 /** add DOM variables to js 1 */
-const userScore = 0;
-const computerScore = 0;
+let userScore = 0;
+let computerScore = 0;
 const userScore_span = document.getElementById("user-score");
 const computerScore_span = document.getElementById("computer-score");
 const scoreBoard_div = document.querySelector(".score-board");
-const result_div = document.querySelector(".result");
+const result_p = document.querySelector(".result > p");
 const rock_div = document.getElementById("r");
 const paper_div = document.getElementById("p");
 const scissors_div = document.getElementById("s");
@@ -15,14 +15,64 @@ function getComputerChoice() {
   const randomNumber = Math.floor(Math.random() * 3);
   return choices[randomNumber];
 }
+/* add 4 because of computerchoice display */
+function convertToWord(letter) {
+  if (letter === "r") return "Rock";
+  if (letter === "p") return "Paper";
+  return "Scissors";
+}
+
+/*add win lose draw - function with 4 because of win(userChoice, computerChoice);*/
+function win(userChoice, computerChoice) {
+  userScore++;
+  userScore_span.innerHTML = userScore;
+  computerScore_span.innerHTML = computerScore;
+  const smallUserWord = "user".fontsize(3).sup();
+  const smallUserWord = "comp".fontsize(3).sup();
+  result_p.innerHTML = `${convertToWord(userChoice)}(user) beats ${convertToWord(computerChoice)}(comp). You win!`;
+}
+
+function lose() {
+  computerScore++;
+  console.log(computerScore);
+}
+
+function draw() {
+  console.log("DRAW");
+}
+
 /** add machine choice to user choice 4 */
 function game(userChoice) {
   const computerChoice = getComputerChoice();
- console.log("userChoice =>" + userChoice );
- console.log("computer choice =>" + computerChoice);
-
+  switch (userChoice + computerChoice) {
+    case "rs":
+    case "pr":
+    case "sp":
+      win(userChoice, computerChoice);
+      break;
+    case "rp":
+    case "ps":
+    case "sr":
+      lose(userChoice, computerChoice);
+      break;
+    case "rr":
+    case "pp":
+    case "ss":
+      draw(userChoice, computerChoice);
+      break;
+  }
+  }
+  
+  /* switch statement replaces
+  const name = "pine";
+  
+  if (name === "david") {
+  console.log('hello')
+  } else if (name === "pine") {
+  console.log('hey')
+ }
 }
-
+*/
 
 
 /**add event listers 2 */
