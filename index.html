@@ -4,41 +4,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta tags for search engines -->
+    <meta name="description" content="Decision Helper. An app to help decision making." />
+    <meta name="keywords"
+        content="decision maker, decision fatigue, decision, decisions, chance, universal feedback." />
 
-    <title>Relevant</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway%7CRighteous" rel="stylesheet">
+
+    <!-- Title -->
+    <title>Decision Helper</title>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
 
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
+    <!-- Header -->
     <header>
-        <h1>Rock Paper Scissors</h1>
+        <h1> 🤔 Decision Helper</h1>
+        <br>
+        <div>
+            <p class="tagline">Would you like some universal feedback with your feelings, to make a decision?
+            </p>
+            <br><br>
+        </div>
+        <div>
+            <label for="first-name" class="header-label">Fill in Your Name (optional): </label><br><br>
+            <input type="text" name="first-name" class="first-name" id="first-name">
+            <br><br>
+            <label for="question-input" class="header-label">Fill in a yes/no question (optional): </label><br><br>
+            <input type="text" name="question-input" class="question-input" id="question-input">
+            <br>
+        </div>
     </header>
 
-    <div class="score-board">
-        <div id="user-label" class="badge">user</div>
-        <div id="computer-label" class="badge">comp</div>
-        <span id="user-score">0</span>:<span id="computer-score">0</span>
-    </div>
-    <div class="result">
-        <p>Paper covers rock. You win!</p>
-    </div>
-    <div class="choices">
-        <div id="r" class="choice">
-            ✊
+    <!-- Game board -->
+    <div class="game">
+        <div>
+            <div class="instruction">
+                <h2>Select your feelings (the more the better).</h2>
+            </div>
+            <div class="options">
+                <div id="do" class="option">
+                    <p class="choice">👌<br>I want to!<br><br></p>
+                </div>
+                <div id="no" class="option">
+                    <p class="choice">👎<br>I don't want to!<br><br></p>
+                </div>
+                <div id="notSure" class="option">
+                    <p class="choice">🤞<br>I'm not sure!<br><br></p>
+                </div>
+            </div>
         </div>
-        <div id="p" class="choice">
-            🖐️
-        </div>
-        <div id="s" class=" choice">
-            ✌🏻
-        </div>
-        <p id="action-message">Make your move.</p>
 
-        <script src="assets/script/index.js" charset="UTF-8"></script>
+
+
+
+        <!-- Score Board -->
+        <div class="scoreSection">
+            <h3>Score</h3>
+            <span id="scoreDo">0</span> : <span id="scoreNot">0</span>
+            <div id="labelDo" class="badge">Yes!</div>
+            <div id="labelNot" class="badge">No!</div>
+        </div>
+        <div class="instruction">
+            <p>The highest score says "Yes" you should go ahead or "No" you should not.</p>
+        </div>
+
+        <!-- Score Report -->
+        <div class="container-two">
+
+            <button class="save--btn" onclick="saveClick()">SAVE</button>
+            <p id="home--count" onclick="homeCount">Yes : </p>
+            <p id="guest--count" onclick="guestCount">No : </p>
+        </div>
+        <!-- Reset Section -->
+        <div id="reset">
+            <button type="button" onclick="location.reload()" class="reset">Reset
+            </button>
+        </div>
+
+    </div>
+    <!-- Footer -->
+    <footer>
+        <div class="disclaimer">Decision Helper cannot be held liable for user decisions.</div>
+        <br>
+        <div>Use at own risk!</div>
+        <br>
+        <small>© Copyright by: Caylin Dewey</small>
+    </footer>
+    <script src="assets/js/script.js"></script>
+
+    <!-- Font Awesome Kit -->
+    <script src="https://kit.fontawesome.com/2d98c3a458.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

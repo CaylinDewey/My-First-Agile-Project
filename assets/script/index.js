@@ -1,97 +1,106 @@
-/** add DOM variables to js 1 */
+const doDiv = document.getElementById("do");
+const noDiv = document.getElementById("no");
+const notSureDiv = document.getElementById("notSure");
+const resultP = document.querySelector(".instruction > p");
+const userScoreSpan = document.getElementById("scoreDo");
+const randomScoreSpan = document.getElementById("scoreNot");
 let userScore = 0;
-let computerScore = 0;
-const userScore_span = document.getElementById("user-score");
-const computerScore_span = document.getElementById("computer-score");
-const scoreBoard_div = document.querySelector(".score-board");
-const result_p = document.querySelector(".result > p");
-const rock_div = document.getElementById("r");
-const paper_div = document.getElementById("p");
-const scissors_div = document.getElementById("s");
+let randomScore = 0;
 
-/** add random machine choice 3 */
-function getComputerChoice() {
-  const choices = ['r', 'p', 's'];
+/**  randomNumber holds getrandomChoice */
+function getrandomChoice() {
+  const options = ['do', 'no', 'notSure'];
   const randomNumber = Math.floor(Math.random() * 3);
-  return choices[randomNumber];
-}
-/* add 4 because of computerchoice display */
-function convertToWord(letter) {
-  if (letter === "r") return "Rock";
-  if (letter === "p") return "Paper";
-  return "Scissors";
+  return options[randomNumber];
 }
 
-/*add win lose draw - function with 4 because of win(userChoice, computerChoice);*/
-function win(userChoice, computerChoice) {
+/** I want to Button */
+function positive(userChoice, randomChoice) {
   userScore++;
-  userScore_span.innerHTML = userScore;
-  computerScore_span.innerHTML = computerScore;
-  const smallUserWord = "user".fontsize(3).sup();
-  const smallCompWord = "comp".fontsize(3).sup();
-  result_p.innerHTML = `${convertToWord(userChoice)} ${smallUserWord} beats ${convertToWord(computerChoice)} ${smallCompWord}. You win!`;
+  userScoreSpan.innerHTML = userScore;
+  randomScoreSpan.innerHTML = randomScore;
 }
 
-function lose(userChoice, computerChoice) {
-  computerScore++;
-  userScore_span.innerHTML = userScore;
-  computerScore_span.innerHTML = computerScore;
-  const smallUserWord = "user".fontsize(3).sup();
-  const smallCompWord = "comp".fontsize(3).sup();
-  result_p.innerHTML = `${convertToWord(userChoice)} ${smallUserWord} loses to ${convertToWord(computerChoice)} ${smallCompWord}. You lost!`;
+/** I dont want to Button */
+function negative(userChoice, randomChoice) {
+  randomScore++;
+  userScoreSpan.innerHTML = userScore;
+  randomScoreSpan.innerHTML = randomScore;
 }
 
-function draw(userChoice, computerChoice) {  
-  const smallUserWord = "user".fontsize(3).sup();
-  const smallCompWord = "comp".fontsize(3).sup();
-  result_p.innerHTML = `${convertToWord(userChoice)} ${smallUserWord} equalls ${convertToWord(computerChoice)} ${smallCompWord}. It's a draw!`;
+function notSure(userChoice, randomChoice) {
+  randomScore++;
+  userScoreSpan.innerHTML = userScore;
+  randomScoreSpan.innerHTML = randomScore;
 }
 
-/** add machine choice to user choice 4 */
+/** Game */
 function game(userChoice) {
-  const computerChoice = getComputerChoice();
-  switch (userChoice + computerChoice) {
-    case "rs":
-    case "pr":
-    case "sp":
-      win(userChoice, computerChoice);
+  const randomChoice = getrandomChoice();
+  switch (userChoice + randomChoice) {
+    case "donotSure":
+    case "nodo":
+    case "notSureno":
+    positive(userChoice, randomChoice);
       break;
-    case "rp":
-    case "ps":
-    case "sr":
-      lose(userChoice, computerChoice);
+    case "dono":
+    case "nonotSure":
+    case "notSuredo":
+    negative(userChoice, randomChoice);
       break;
-    case "rr":
-    case "pp":
-    case "ss":
-      draw(userChoice, computerChoice);
+    case "dodo":
+    case "nono":
+    case "notSurenotSure":
+    notSure (userChoice, randomChoice);
       break;
   }
-  }
-  
-  /* switch statement replaces
-  const name = "pine";
-  
-  if (name === "david") {
-  console.log('hello')
-  } else if (name === "pine") {
-  console.log('hey')
- }
-}
-*/
-
-
-/**add event listers 2 */
-function main () {
-  rock_div.addEventListener('click', function() {
-  game("r");
-  })
-  paper_div.addEventListener('click', function() {
-  game("p");
-  })
-  scissors_div.addEventListener('click', function() {
-  game("s");
-  })
 }
 
-main();
+/** Result Feedback */
+function feed(action){
+  if (userScore > randomScore) {
+    resultP.innerHTML = "Universal feedback says do it!";
+  } else if (userScore < randomScore) { 
+    resultP.innerHTML = "Universal feedback says don't it!";
+  } else {
+  resultP.innerHTML = "Ask for advice from a trusted source!";
+  }} 
+
+/** Listener Player Buttons */
+function listener() {
+  doDiv.addEventListener('click', function () {
+    game("do");
+    feed();
+  });
+  noDiv.addEventListener('click', function () {
+    game("no");
+    feed();
+  });
+  notSureDiv.addEventListener('click', function () {
+    game("notSure");
+    feed();
+  });
+}
+
+listener();
+
+// save items 
+
+let saveCountHome;
+let saveCountGuest;
+let domHome = document.getElementById("home--count")
+let domGuest = document.getElementById("guest--count")
+
+function saveClick() {
+    saveCountHome  = userScore + " -- "
+    domHome.textContent += saveCountHome;
+
+    saveCountGuest  = randomScore + " -- "
+    domGuest.textContent += saveCountGuest;
+
+    changeCount.textContent = 0;
+    homeCount = 0;
+    guestCountChange.textContent = 0;
+    guestCount = 0;
+
+}
