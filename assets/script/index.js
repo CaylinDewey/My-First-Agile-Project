@@ -14,20 +14,21 @@ function getrandomChoice() {
   return options[randomNumber];
 }
 
-/** I want to Button */
+/** User Wins */
 function positive(userChoice, randomChoice) {
   userScore++;
   userScoreSpan.innerHTML = userScore;
   randomScoreSpan.innerHTML = randomScore;
 }
 
-/** I dont want to Button */
+/** Machine Wins */
 function negative(userChoice, randomChoice) {
   randomScore++;
   userScoreSpan.innerHTML = userScore;
   randomScoreSpan.innerHTML = randomScore;
 }
 
+/** Draw */
 function notSure(userChoice, randomChoice) {
   randomScore++;
   userScoreSpan.innerHTML = userScore;
@@ -51,41 +52,48 @@ function game(userChoice) {
     case "dodo":
     case "nono":
     case "notSurenotSure":
-    notSure (userChoice, randomChoice);
+      notSure (userChoice, randomChoice);
       break;
+
   }
 }
 
-/** Result Feedback */
+/** Result Feedback    
 function feed(action){
-  if (userScore > randomScore) {
+  const feedHome = userScore;
+  const feedGuest = randomScore;
+  feedback++;
+  feedGuest++;
+  if (feedHome > feedGuest) {
     resultP.innerHTML = "Universal feedback says do it!";
-  } else if (userScore < randomScore) { 
+  } else if (feedHome < feedGuest) { 
     resultP.innerHTML = "Universal feedback says don't it!";
   } else {
   resultP.innerHTML = "Ask for advice from a trusted source!";
-  }} 
+  }}
+  */
+
+ 
 
 /** Listener Player Buttons */
 function listener() {
   doDiv.addEventListener('click', function () {
     game("do");
-    feed();
+    /*feed("do");*/
   });
   noDiv.addEventListener('click', function () {
     game("no");
-    feed();
+    /**feed("no");*/
   });
   notSureDiv.addEventListener('click', function () {
     game("notSure");
-    feed();
+    /**feed("notSure");*/
   });
 }
 
 listener();
 
-// save items 
-
+/** Feedback Report */ 
 let saveCountHome;
 let saveCountGuest;
 let domHome = document.getElementById("home--count")
@@ -97,10 +105,20 @@ function saveClick() {
 
     saveCountGuest  = randomScore + " -- "
     domGuest.textContent += saveCountGuest;
-
+    
+    if (saveCountHome > saveCountGuest) {
+      resultP.innerHTML = "Universal feedback says do it!";
+    } else if (saveCountHome < saveCountGuest) { 
+      resultP.innerHTML = "Universal feedback says don't do it!";
+    } else {
+    resultP.innerHTML = "Ask for advice from a trusted source!";
+    }
+  }    
+/**
     changeCount.textContent = 0;
     homeCount = 0;
+    console.log(homeCount)
     guestCountChange.textContent = 0;
     guestCount = 0;
-
-}
+    console.log(guestCount)
+} */

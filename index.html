@@ -26,10 +26,10 @@
 <body>
     <!-- Header -->
     <header>
-        <h1> 🤔 Decision Helper</h1>
+        <h1> 🤔 Should I, Shouldn't I?</h1>
         <br>
         <div>
-            <p class="tagline">Would you like some universal feedback with your feelings, to make a decision?
+            <p class="tagline">Get universal feedback to make a decision!
             </p>
             <br><br>
         </div>
@@ -62,9 +62,6 @@
             </div>
         </div>
 
-
-
-
         <!-- Score Board -->
         <div class="scoreSection">
             <h3>Score</h3>
@@ -72,20 +69,21 @@
             <div id="labelDo" class="badge">Yes!</div>
             <div id="labelNot" class="badge">No!</div>
         </div>
+
+        <!-- Score Report -->
+        <div class="scoreFeedback">
+
+            <button class="save--btn" onclick="saveClick()">SAVE THE SCORES</button>
+            <p id="home--count" onclick="homeCount">Yes : </p>
+            <p id="guest--count" onclick="guestCount">No : </p>
+        </div>
         <div class="instruction">
             <p>The highest score says "Yes" you should go ahead or "No" you should not.</p>
         </div>
 
-        <!-- Score Report -->
-        <div class="container-two">
-
-            <button class="save--btn" onclick="saveClick()">SAVE</button>
-            <p id="home--count" onclick="homeCount">Yes : </p>
-            <p id="guest--count" onclick="guestCount">No : </p>
-        </div>
         <!-- Reset Section -->
         <div id="reset">
-            <button type="button" onclick="location.reload()" class="reset">Reset
+            <button type="button" onclick="location.reload()" class="reset">RESET
             </button>
         </div>
 
@@ -98,7 +96,7 @@
         <br>
         <small>© Copyright by: Caylin Dewey</small>
     </footer>
-    <script src="assets/js/script.js"></script>
+    <script src="assets/script/index.js"></script>
 
     <!-- Font Awesome Kit -->
     <script src="https://kit.fontawesome.com/2d98c3a458.js" crossorigin="anonymous"></script>
