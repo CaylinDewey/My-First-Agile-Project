@@ -13,51 +13,47 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway%7CRighteous" rel="stylesheet">
 
     <!-- Title -->
-    <title>Decision Helper</title>
+    <title>Rock Paper Scissors Spock Lizard</title>
 
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/images/favicon/site.webmanifest">
 
+    <!-- Linked Sheets -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/script/index.js" defer></script>
 </head>
 
 <body>
     <!-- Header -->
     <header>
-        <h1> 🤔 Should I, Shouldn't I?</h1>
-        <br>
-        <div>
-            <p class="tagline">Get universal feedback to make a decision!
-            </p>
-            <br><br>
-        </div>
-        <div>
-            <label for="first-name" class="header-label">Fill in Your Name (optional): </label><br><br>
-            <input type="text" name="first-name" class="first-name" id="first-name">
-            <br><br>
-            <label for="question-input" class="header-label">Fill in a yes/no question (optional): </label><br><br>
-            <input type="text" name="question-input" class="question-input" id="question-input">
-            <br>
-        </div>
-    </header>
+        <h1>Game of Rock Paper Scissors Spock Lizard</h1><br>
+        <div><p class="tagline">Play against the universe!</p></div><br>
+        <a href=“https://en.wikipedia.org/wiki/File:Rock_paper_scissors_lizard_spock.png”>Click here to view the rules of the game</a> </header>
 
     <!-- Game board -->
     <div class="game">
         <div>
             <div class="instruction">
-                <h2>Select your feelings (the more the better).</h2>
+                <h2>Make your selection.</h2>
             </div>
             <div class="options">
-                <div id="do" class="option">
-                    <p class="choice">👌<br>I want to!<br><br></p>
+                <div id="rock" class="option">
+                    <p class="choice">✊<br>Rock<br><br></p>
                 </div>
-                <div id="no" class="option">
-                    <p class="choice">👎<br>I don't want to!<br><br></p>
+                <div id="paper" class="option">
+                    <p class="choice">🖐️<br>Paper<br><br></p>
                 </div>
-                <div id="notSure" class="option">
-                    <p class="choice">🤞<br>I'm not sure!<br><br></p>
+                <div id="scissors" class="option">
+                    <p class="choice">✌🏻<br>Scissors<br><br></p>
+                </div>
+                <div id="spock" class="option">
+                    <p class="choice">🖖<br>Spock<br><br></p>
+                </div>
+                <div id="lizard" class="option">
+                    <p class="choice">🦎<br>Lizard<br><br></p>
                 </div>
             </div>
         </div>
@@ -65,11 +61,13 @@
         <!-- Score Board -->
         <div class="scoreSection">
             <h3>Score</h3>
-            <span id="scoreDo">0</span> : <span id="scoreNot">0</span>
-            <div id="labelDo" class="badge">Yes!</div>
-            <div id="labelNot" class="badge">No!</div>
+            <span id="scoreUser">0</span> : <span id="scoreUni">0</span>
+            <div id="labelUser" class="badge">Player</div>
+            <div id="labelUni" class="badge">Universe</div>
         </div>
-
+        <div class="instruction">
+            <p>The highest score wins!</p>
+        </div>
         <!-- Score Report -->
         <div class="scoreFeedback">
 
@@ -77,9 +75,7 @@
             <p id="home--count" onclick="homeCount">Yes : </p>
             <p id="guest--count" onclick="guestCount">No : </p>
         </div>
-        <div class="instruction">
-            <p>The highest score says "Yes" you should go ahead or "No" you should not.</p>
-        </div>
+
 
         <!-- Reset Section -->
         <div id="reset">
@@ -96,7 +92,7 @@
         <br>
         <small>© Copyright by: Caylin Dewey</small>
     </footer>
-    <script src="assets/script/index.js"></script>
+
 
     <!-- Font Awesome Kit -->
     <script src="https://kit.fontawesome.com/2d98c3a458.js" crossorigin="anonymous"></script>

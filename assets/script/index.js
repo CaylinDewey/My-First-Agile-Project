@@ -1,58 +1,84 @@
-const doDiv = document.getElementById("do");
-const noDiv = document.getElementById("no");
-const notSureDiv = document.getElementById("notSure");
+const rockDiv = document.getElementById("rock");
+const paperDiv = document.getElementById("paper");
+const scissorsDiv = document.getElementById("scissors");
+const spockDiv = document.getElementById("spock");
+const lizardDiv = document.getElementById("lizard");
 const resultP = document.querySelector(".instruction > p");
-const userScoreSpan = document.getElementById("scoreDo");
-const randomScoreSpan = document.getElementById("scoreNot");
+const userScoreSpan = document.getElementById("scoreUser");
+const randomScoreSpan = document.getElementById("scoreUni");
 let userScore = 0;
 let randomScore = 0;
+let runUserScore = 0;
+let runRandomScore = 0;
 
 /**  randomNumber holds getrandomChoice */
 function getrandomChoice() {
-  const options = ['do', 'no', 'notSure'];
+  const options = ['rock', 'paper', 'scissors'];
   const randomNumber = Math.floor(Math.random() * 3);
   return options[randomNumber];
 }
 
 /** User Wins */
-function positive(userChoice, randomChoice) {
+function userWins(userChoice, randomChoice) {
   userScore++;
+  runUserScore++;
   userScoreSpan.innerHTML = userScore;
   randomScoreSpan.innerHTML = randomScore;
+  resultP.innerHTML = `Universe chooses:  ${(randomChoice)} - you win!!!`
 }
 
 /** Machine Wins */
-function negative(userChoice, randomChoice) {
+function uniWins(userChoice, randomChoice) {
   randomScore++;
+  runRandomScore++;
   userScoreSpan.innerHTML = userScore;
   randomScoreSpan.innerHTML = randomScore;
+  resultP.innerHTML = `Universe chooses:  ${(randomChoice)} - you lose!!!`
 }
 
 /** Draw */
-function notSure(userChoice, randomChoice) {
+function draw(userChoice, randomChoice) {
   randomScore++;
+  runRandomScore++;
   userScoreSpan.innerHTML = userScore;
   randomScoreSpan.innerHTML = randomScore;
+  resultP.innerHTML = `Universe chooses:  ${(randomChoice)} - it's a draw, have another round!`
 }
 
 /** Game */
 function game(userChoice) {
   const randomChoice = getrandomChoice();
   switch (userChoice + randomChoice) {
-    case "donotSure":
-    case "nodo":
-    case "notSureno":
-    positive(userChoice, randomChoice);
+    case "rockscissors":
+    case "rocklizard":
+    case "paperrock":
+    case "paperspock":
+    case "lizardpaper":
+    case "lizardspock":
+    case "spockscissors":
+    case "spockrock":
+    case "scissorslizard":
+    case "scissorspaper":
+      userWins(userChoice, randomChoice);
       break;
-    case "dono":
-    case "nonotSure":
-    case "notSuredo":
-    negative(userChoice, randomChoice);
+    case "rockpaper":
+    case "rockspock":
+    case "paperlizard":
+    case "paperscissors":
+    case "lizardscissors":
+    case "lizardrock":
+    case "spockpaper":
+    case "spocklizard":
+    case "scissorsspock":
+    case "scissorsrock":
+      uniWins(userChoice, randomChoice);
       break;
-    case "dodo":
-    case "nono":
-    case "notSurenotSure":
-      notSure (userChoice, randomChoice);
+    case "rockrock":
+    case "paperpaper":
+    case "scissorsscissors":
+    case "spockspock":
+    case "lizardlizard":
+      draw(userChoice, randomChoice);
       break;
 
   }
@@ -72,48 +98,44 @@ function feed(action){
   resultP.innerHTML = "Ask for advice from a trusted source!";
   }}
   */
+const add = (x, y) => x + y;
+console.log(add(2, 3));
 
- 
 
 /** Listener Player Buttons */
 function listener() {
-  doDiv.addEventListener('click', function () {
-    game("do");
-    /*feed("do");*/
+  rockDiv.addEventListener('click', function () {
+    game("rock");
   });
-  noDiv.addEventListener('click', function () {
-    game("no");
-    /**feed("no");*/
+  paperDiv.addEventListener('click', function () {
+    game("paper");  
   });
-  notSureDiv.addEventListener('click', function () {
-    game("notSure");
-    /**feed("notSure");*/
+  scissorsDiv.addEventListener('click', function () {
+    game("scissors");
+  });
+  spockDiv.addEventListener('click', function () {
+    game("spock");
+  });
+  lizardDiv.addEventListener('click', function () {
+    game("lizard");
   });
 }
 
 listener();
 
-/** Feedback Report */ 
+/** Feedback Report */
 let saveCountHome;
 let saveCountGuest;
 let domHome = document.getElementById("home--count")
 let domGuest = document.getElementById("guest--count")
 
 function saveClick() {
-    saveCountHome  = userScore + " -- "
-    domHome.textContent += saveCountHome;
+  saveCountHome = runUserScore + " -- "
+  domHome.textContent += saveCountHome;
 
-    saveCountGuest  = randomScore + " -- "
-    domGuest.textContent += saveCountGuest;
-    
-    if (saveCountHome > saveCountGuest) {
-      resultP.innerHTML = "Universal feedback says do it!";
-    } else if (saveCountHome < saveCountGuest) { 
-      resultP.innerHTML = "Universal feedback says don't do it!";
-    } else {
-    resultP.innerHTML = "Ask for advice from a trusted source!";
-    }
-  }    
+  saveCountGuest = runRandomScore + " -- "
+  domGuest.textContent += saveCountGuest;
+}
 /**
     changeCount.textContent = 0;
     homeCount = 0;
