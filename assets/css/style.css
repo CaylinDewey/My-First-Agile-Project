@@ -74,17 +74,22 @@ h3 {
     height: max-content;
     color: white;
     text-align: left;
-    font-size: larger;
+    font-size: medium;
     font-weight: bold;
 }
 
 /** Game Board **/
 .instruction {
-    margin: 0 25px;
-    padding: 15px;
-    border: 5px #102929;
-    border-radius: 5%;
+    padding: 20px 30px;
+    margin: 25px auto;
+    border: 5px solid white;
+    border-radius: 5px;
     background-color: #7d7f96;
+    width: 420px;
+    text-align: center;
+    font-size: medium;
+    color: white;
+    position: relative;
 }
 
 .options {
@@ -106,7 +111,8 @@ h3 {
     color: white;
 }
 
-.option:active {
+
+.option:hover {
     background: blue;
 }
 
@@ -144,6 +150,14 @@ h3 {
     top: 110px;
     right: -5px;
 }
+
+.result {
+    background-color: #a01871;
+    padding: 5px;
+    margin:0;
+    font-size: xx-large;
+}
+
 .scoreFeedback{
 padding: 20px 30px;
     margin: 25px auto;
