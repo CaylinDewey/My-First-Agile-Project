@@ -3,7 +3,8 @@ const paperDiv = document.getElementById("paper");
 const scissorsDiv = document.getElementById("scissors");
 const spockDiv = document.getElementById("spock");
 const lizardDiv = document.getElementById("lizard");
-const resultP = document.querySelector(".instruction > p");
+const uniChoiceDiv = document.getElementById("uniChoice > p");
+const resultP = document.querySelector(".result > p");
 const userScoreSpan = document.getElementById("scoreUser");
 const randomScoreSpan = document.getElementById("scoreUni");
 let userScore = 0;
@@ -13,8 +14,8 @@ let runRandomScore = 0;
 
 /**  randomNumber holds getrandomChoice */
 function getrandomChoice() {
-  const options = ['rock', 'paper', 'scissors'];
-  const randomNumber = Math.floor(Math.random() * 3);
+  const options = ['rock', 'paper', 'scissors', 'spock', 'lizard'];
+  const randomNumber = Math.floor(Math.random() * 5);
   return options[randomNumber];
 }
 
@@ -24,7 +25,8 @@ function userWins(userChoice, randomChoice) {
   runUserScore++;
   userScoreSpan.innerHTML = userScore;
   randomScoreSpan.innerHTML = randomScore;
-  resultP.innerHTML = `Universe chooses:  ${(randomChoice)} - you win!!!`
+  uniChoiceDiv.innerHTML = `Choice ${(randomChoice)}`;
+  resultP.innerHTML = `Universe chooses:  <br> ${bigFont(randomChoice)} - you win!!!`;
 }
 
 /** Machine Wins */
@@ -33,16 +35,18 @@ function uniWins(userChoice, randomChoice) {
   runRandomScore++;
   userScoreSpan.innerHTML = userScore;
   randomScoreSpan.innerHTML = randomScore;
-  resultP.innerHTML = `Universe chooses:  ${(randomChoice)} - you lose!!!`
+  resultP.innerHTML = `Universe chooses:  ${(randomChoice)} - you lose!!!`;
 }
 
 /** Draw */
 function draw(userChoice, randomChoice) {
   randomScore++;
+  userScore++;
   runRandomScore++;
+  runUserScore++;
   userScoreSpan.innerHTML = userScore;
   randomScoreSpan.innerHTML = randomScore;
-  resultP.innerHTML = `Universe chooses:  ${(randomChoice)} - it's a draw, have another round!`
+  resultP.innerHTML = `Universe chooses:  ${(randomChoice)} - it's a draw, have another round!`;
 }
 
 /** Game */
@@ -132,6 +136,8 @@ let domGuest = document.getElementById("guest--count")
 function saveClick() {
   saveCountHome = runUserScore + " -- "
   domHome.textContent += saveCountHome;
+  scoreUser.innerHTML = 0;
+  scoreUni.innerHTML = 0;
 
   saveCountGuest = runRandomScore + " -- "
   domGuest.textContent += saveCountGuest;
