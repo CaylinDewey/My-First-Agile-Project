@@ -107,13 +107,12 @@ h3 {
     transition: 0.5s ease;
 }
 
-.choice {
-    color: white;
-}
-
-
 .option:hover {
     background: blue;
+}
+
+.choice {
+    color: white;
 }
 
 /** Score Board Section */

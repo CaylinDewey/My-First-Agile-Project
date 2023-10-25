@@ -3,7 +3,7 @@ const paperDiv = document.getElementById("paper");
 const scissorsDiv = document.getElementById("scissors");
 const spockDiv = document.getElementById("spock");
 const lizardDiv = document.getElementById("lizard");
-const uniChoiceDiv = document.getElementById("uniChoice > p");
+const symbolP = document.querySelector(".symbol > p");
 const resultP = document.querySelector(".result > p");
 const userScoreSpan = document.getElementById("scoreUser");
 const randomScoreSpan = document.getElementById("scoreUni");
@@ -86,23 +86,46 @@ function game(userChoice) {
 
   }
 }
+function calculateCorrectAnswer() {
 
-/** Result Feedback    
-function feed(action){
-  const feedHome = userScore;
-  const feedGuest = randomScore;
-  feedback++;
-  feedGuest++;
-  if (feedHome > feedGuest) {
-    resultP.innerHTML = "Universal feedback says do it!";
-  } else if (feedHome < feedGuest) { 
-    resultP.innerHTML = "Universal feedback says don't it!";
+  let operand1 = parseInt(document.getElementById('operand1').innerText);
+  let operand2 = parseInt(document.getElementById('operand2').innerText);
+  let operator = document.getElementById("operator").innerText;
+
+  if (operator === "+") {
+      return [operand1 + operand2, "addition"];
+  } else if (operator === "x") {
+      return [operand1 * operand2, "multiply"];
+  } else if (operator === "-") {
+      return [operand1 - operand2, "subtract"];
   } else {
-  resultP.innerHTML = "Ask for advice from a trusted source!";
-  }}
-  */
-const add = (x, y) => x + y;
-console.log(add(2, 3));
+      alert(`Unimplemented operator ${operator}`);
+      throw `Unimplemented operator ${operator}. Aborting!`;
+  }
+
+}
+
+
+
+/** Result Feedback */   
+function feed(randomChoice) {
+  document.querySelector(symbolP).textContent =  
+  
+  if (randomChoice === "rock") {
+    symbolP.innerHTML = "Rocks";
+  } else if (randomChoice === "paper") { 
+    symbolP.innerHTML = "Paper";
+  } else if (randomChoice === "scissors") { 
+    symbolP.innerHTML = "Scissors";
+  } else if (randomChoice === "spock") { 
+    symbolP.innerHTML = "Spock";
+  } else if (randomChoice === "lizard") { 
+    symbolP.innerHTML = "Lizard";
+  } else {
+  symbolP.innerHTML = "Ask for advice from a trusted source!";
+  }
+}
+  
 
 
 /** Listener Player Buttons */
@@ -141,11 +164,3 @@ function saveClick() {
   saveCountGuest = runRandomScore + " -- "
   domGuest.textContent += saveCountGuest;
 }
-/**
-    changeCount.textContent = 0;
-    homeCount = 0;
-    console.log(homeCount)
-    guestCountChange.textContent = 0;
-    guestCount = 0;
-    console.log(guestCount)
-} */
